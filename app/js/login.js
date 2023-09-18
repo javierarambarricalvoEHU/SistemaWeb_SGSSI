@@ -23,10 +23,9 @@ function checkName(){
 
 function checkSurname(){
     var surname= document.signUp.surname.value;
-
     for (let i = 0; i < surname.length; i++){
         var ascii = surname.charCodeAt(i);
-        if (ascii < 65 || ascii > 122){
+        if ((ascii < 65 || ascii > 122) && (ascii != 32)){
             window.alert ("Asegúrate de solo introducir texto: "+surname);
             return false;
         }
@@ -53,7 +52,7 @@ function checkDNI(){
 }
 
 function checkTel(){
-    var tel= document.signUp.telephone.value;
+    var tel= document.signUp.phone.value;
 
     for (let i = 0; i < tel.length; i++) {
         var ascii = tel.charCodeAt(i);
@@ -67,9 +66,40 @@ function checkTel(){
     
 }
 
-function checkData(){
-    checkName();
-    checkSurname();
-    checkDNI();
-    checkTel();
+function checkDate(){
+    var date= document.signUp.date.value;
+    var reg = RegExp('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+
+    if (!reg.test(date)){
+        window.alert("Error fecha: formato incorrecto");
+        return false;
+    }
+    return true;
 }
+
+async function checkData(event){
+    event.preventDefault();
+    //if all the checks are true, submit the form via POST fetch to /api/signup_register.php
+    try {
+        if (!checkName() || !checkSurname() || !checkDNI() || !checkTel() || !checkDate()) {
+            return;
+        }
+    } catch (error) {
+        alert("Algo ha ido mal")
+        console.log(error);
+        return;
+    }
+    res = await fetch('/api/signup_register.php', {
+        method: 'POST',
+        body: new FormData(document.getElementById('signUpForm'))
+    })
+    res = await res.text();
+    if (res != 'Usuario registrado correctamente') {
+        alert(res);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById("SignUpButton").addEventListener("click", checkData);
+  })
+  

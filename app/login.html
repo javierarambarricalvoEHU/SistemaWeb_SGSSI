@@ -38,40 +38,24 @@
         <hr>
         <div class = "container__signup">
             <h1>Sign-up</h1>
-            <form name="signUp">
-                <div class="mb-3">
+            <form name="signUp" id="signUpForm">
                     <label for="NameSignup" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="NameSignup" name="name">
-                </div>
-                <div class="mb-3">
+                    <input type="text" class="form-control mb-3" id="NameSignup" name="name">
                     <label for="ApellidosSignup" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="ApellidosSignup" name="surname">
-                </div>
-                <div class="mb-3">
+                    <input type="text" class="form-control mb-3" id="ApellidosSignup" name="surname">
                     <label for="UsernameSignup" class="form-label">Usuario</label>
-                    <input class="form-control" id="UsernameSignup">
-                </div>
-                <div class="mb-3">
+                    <input class="form-control mb-3" id="UsernameSignup" name="username">
                     <label for="InputPasswordSignup" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="InputPasswordSignup">
-                </div>
-                <div class="mb-3">
+                    <input type="password" class="form-control mb-3" id="InputPasswordSignup" name="password">
                     <label for="InputEmailSignup" class="form-label">Direccion de correo</label>
-                    <input type="email" class="form-control" id="InputEmailSignup" describedby="emailHelp">
-                </div>
-                <div class="mb-3">
+                    <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email">
                     <label for="PhoneSignup" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control" placeholder="9 Digitos" id="PhoneSignup" name="telephone" required minlength="9" maxlength="9">
-                </div>
-                <div class="mb-3">
+                    <input type="tel" class="form-control mb-3" placeholder="9 Digitos" id="PhoneSignup" name="phone" required minlength="9" maxlength="9">
                     <label for="DOBSignup" class="form-label">Fecha de nacimiento:</label>
-                    <input class="form-control" id="DOBSignup" placeholder="aaaa-mm-dd">
-                </div>
-                <div class="mb-3">
+                    <input class="form-control mb-3" id="DOBSignup" placeholder="aaaa-mm-dd" name="dob">
                     <label for="DNISignup" class="form-label">DNI</label>
-                    <input type="text" class="form-control" id="DNISignup" placeholder="12345678-Z" name="dni">
-                </div>
-                <button type="submit" class="btn btn-primary" onclick="checkData()">Registro</button>
+                    <input type="text" class="form-control mb-3" id="DNISignup" placeholder="12345678-Z" name="dni">
+                    <button type="submit" id="SignUpButton" class="btn btn-primary">Registro</button>
             </form>
             <br>
         </div>
