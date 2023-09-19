@@ -40,7 +40,7 @@
             <h1>Sign-up</h1>
             <form name="signUp" id="signUpForm">
                     <label for="NameSignup" class="form-label">Nombre</label>
-                    <input type="text" class="form-control mb-3" id="NameSignup" name="name">
+                    <input type="text" class="form-control mb-3" id="NameSignup" name="name" onkeyup="checkName()">
                     <label for="ApellidosSignup" class="form-label">Apellidos</label>
                     <input type="text" class="form-control mb-3" id="ApellidosSignup" name="surname">
                     <label for="UsernameSignup" class="form-label">Usuario</label>
@@ -55,7 +55,7 @@
                     <input class="form-control mb-3" id="DOBSignup" placeholder="aaaa-mm-dd" name="dob">
                     <label for="DNISignup" class="form-label">DNI</label>
                     <input type="text" class="form-control mb-3" id="DNISignup" placeholder="12345678-Z" name="dni">
-                    <button type="submit" id="SignUpButton" class="btn btn-primary">Registro</button>
+                    <button type="submit" id="SignUpButton" class="btn btn-primary" onclick="checkData()">Registro</button>
             </form>
             <br>
         </div>
