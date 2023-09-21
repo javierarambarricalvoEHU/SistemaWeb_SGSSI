@@ -41,7 +41,7 @@ while ($row = mysqli_fetch_array($query)) {
                 <?php
                  include "dbconn.php";
 
-                 $query = mysqli_query($conn, "SELECT COUNT(id) FROM usuarios")
+                 $query = mysqli_query($conn, "SELECT COUNT(dni) FROM usuarios")
                     or die (mysqli_error($conn));
                 
                 $row = mysqli_fetch_array($query);
