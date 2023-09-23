@@ -3,12 +3,13 @@ include "../dbconn.php";
 $usuario = $_REQUEST['email'];
 $contrasena = $_REQUEST['password'];
 
-$query = "SELECT COUNT(dni) FROM usuarios WHERE usuario = '$usuario' OR email = '$usuario' AND contraseña = '$contrasena'";
+$query = "SELECT email, usuario FROM usuarios WHERE (usuario = '$usuario' OR email = '$usuario') AND contraseña = '$contrasena'";
 $result = mysqli_query($conn, $query) or die (mysqli_error($conn));
 $row = mysqli_fetch_array($result);
-if ($row[0] == 1) {
+if ($row[0]) {
     session_start();
-    $_SESSION['username'] = $usuario;
+    $_SESSION['email'] = $row[0];
+    $_SESSION['usuario'] = $row[1];
     echo "Login correcto";
 } else {
     echo "Login incorrecto";

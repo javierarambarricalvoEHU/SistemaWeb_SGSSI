@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +21,8 @@
     <div class="container-sm">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center me-md-auto link-body-emphasis text-decoration-none">
-            <span class="fs-5">Euskor&oacute;scopo:
-                <?php
-                print_r($_SESSION);
-                ?>
-            </span>
+        <span class="fs-5">Euskor&oacute;scopo<?php if(isset($_SESSION['email'])){echo ": Bienvenido, $_SESSION[usuario]";}?></span>
         </a>
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link active">Login</a></li>
-        </ul>
         </header>
     </div>
     <div class="container" style="max-width: 50%;">
