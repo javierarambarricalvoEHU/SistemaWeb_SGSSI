@@ -1,14 +1,3 @@
-<!-- <?php
-
-
-while ($row = mysqli_fetch_array($query)) {
-  echo
-   "<tr>
-    <td>{$row['id']}</td>
-    <td>{$row['nombre']}</td>
-   </tr>";
-}
-?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +18,7 @@ while ($row = mysqli_fetch_array($query)) {
             </a>
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="login.html" class="nav-link active">Login</a></li>
+                <li class="nav-item"><a href="login.php" class="nav-link active">Login</a></li>
             </ul>
         </header>
         <main>
