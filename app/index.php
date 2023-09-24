@@ -20,6 +20,7 @@
             <ul class="nav nav-pills">
                 <?php
                 if (isset($_SESSION['email'])) {
+                    echo '<li class="nav-item"><a href="modifyUserData.php" class="nav-link" style="color:white">Modificar datos</a></li>';
                     echo '<li class="nav-item"><a href="logout.php" class="btn btn-danger">Logout</a></li>';
                 } else {
                     echo '<li class="nav-item"><a href="login.php" class="nav-link active">Login</a></li>';
