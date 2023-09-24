@@ -14,7 +14,7 @@
     <title>Web Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/modifyUserData.js"></script>
     <style>
         .wrong_input{
             display: none; 
@@ -50,18 +50,18 @@
                     <label for="ApellidosSignup" class="form-label">Apellidos:</label>
                     <input type="text" class="form-control mb-3" id="ApellidosSignup" name="surname" onkeyup="live_checkSurname()" placeholder=<?php echo "$row[2]";?>>
                     <p class="wrong_input" id="wrong_surname">Solo caracteres alfabeticos</p>
-                    <label for="UsernameSignup" class="form-label">Usuario: <?php echo "$_SESSION[usuario]";?></label>
-                    <input class="form-control mb-3" id="UsernameSignup" name="username">
-                    <label for="InputPasswordSignup" class="form-label">Contraseña: <?php echo "$_SESSION[contraseña]";?></label>
-                    <input type="password" class="form-control mb-3" id="InputPasswordSignup" name="password">
-                    <label for="InputEmailSignup" class="form-label">Direccion de correo: <?php echo "$_SESSION[email]";?></label>
-                    <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email">
-                    <label for="PhoneSignup" class="form-label">Telefono: <?php echo "$_SESSION[telefono]";?></label>
-                    <input type="tel" class="form-control mb-3" placeholder="9 Digitos" id="PhoneSignup" name="phone" required minlength="9" maxlength="9">
-                    <label for="DOBSignup" class="form-label">Fecha de nacimiento: <?php echo "$_SESSION[fecha_nacimiento]";?></label>
-                    <input class="form-control mb-3" id="DOBSignup" placeholder="aaaa-mm-dd" name="dob">
-                    <label for="DNISignup" class="form-label">DNI: <?php echo "$_SESSION[dni]";?></label>
-                    <input type="text" class="form-control mb-3" id="DNISignup" placeholder="12345678-Z" name="dni">
+                    <label for="UsernameSignup" class="form-label">Usuario</label>
+                    <input class="form-control mb-3" id="UsernameSignup" name="username" placeholder=<?php echo "$row[3]";?>>
+                    <label for="InputPasswordSignup" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control mb-3" id="InputPasswordSignup" name="password" placeholder=<?php echo "$row[4]";?>>
+                    <label for="InputEmailSignup" class="form-label">Direccion de correo</label>
+                    <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email" placeholder=<?php echo "$row[5]";?>>
+                    <label for="PhoneSignup" class="form-label">Telefono (9 dígitos) </label>
+                    <input type="tel" class="form-control mb-3" id="PhoneSignup" name="phone" required minlength="9" maxlength="9" placeholder=<?php echo "$row[6]";?>>
+                    <label for="DOBSignup" class="form-label">Fecha de nacimiento (aaaa-mm-dd) </label>
+                    <input class="form-control mb-3" id="DOBSignup" name="dob" placeholder=<?php echo "$row[7]";?>>
+                    <label for="DNISignup" class="form-label">DNI (12345678-Z)</label>
+                    <input type="text" class="form-control mb-3" id="DNISignup" name="dni" placeholder=<?php echo "$row[0]";?>>
                     <button type="submit" id="SignUpButton" class="btn btn-primary">Registro</button>
             </form>
             <br>
