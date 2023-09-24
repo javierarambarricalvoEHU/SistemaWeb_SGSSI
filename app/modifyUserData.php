@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php
+    session_start();
+    include "dbconn.php";
+    $query = mysqli_query($conn, "SELECT * FROM usuarios")
+    or die (mysqli_error($conn));
+
+    $row = mysqli_fetch_array($query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,17 +44,11 @@
         <div class = "container__signup">
             <h1>Modificar datos</h1>
             <form name="signUp" id="signUpForm">
-                    <label for="NameSignup" class="form-label">Nombre: 
-                        <?php 
-                            echo "$_SESSION[nombre]";                   
-                        ?>
-                    </label>
-
-
-                    <input type="text" class="form-control mb-3" id="NameSignup" name="name" onkeyup="live_checkName()">
+                    <label for="NameSignup" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control mb-3" id="NameSignup" name="name" onkeyup="live_checkName()" placeholder=<?php echo "$row[1]";?>>
                     <p class="wrong_input" id="wrong_name">Solo caracteres alfabeticos</p>
-                    <label for="ApellidosSignup" class="form-label">Apellidos: <?php echo "$_SESSION[apellidos]";?></label>
-                    <input type="text" class="form-control mb-3" id="ApellidosSignup" name="surname" onkeyup="live_checkSurname()">
+                    <label for="ApellidosSignup" class="form-label">Apellidos:</label>
+                    <input type="text" class="form-control mb-3" id="ApellidosSignup" name="surname" onkeyup="live_checkSurname()" placeholder=<?php echo "$row[2]";?>>
                     <p class="wrong_input" id="wrong_surname">Solo caracteres alfabeticos</p>
                     <label for="UsernameSignup" class="form-label">Usuario: <?php echo "$_SESSION[usuario]";?></label>
                     <input class="form-control mb-3" id="UsernameSignup" name="username">
