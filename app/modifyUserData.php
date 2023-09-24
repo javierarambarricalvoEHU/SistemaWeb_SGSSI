@@ -34,37 +34,32 @@
         </header>
     </div>
     <div class="container" style="max-width: 50%;">
-        <div class="container login">
-            <h1>Login</h1>
-            <form name="logInForm" id="logInForm">
-                <label for="InputEmail" class="form-label">Email address or username</label>
-                <input class="form-control mb-3" id="InputEmail" describedby="emailHelp">
-                <label for="InputPassword" class="form-label">Password</label>
-                <input type="password" class="form-control mb-3" id="InputPassword">
-                <button type="submit" class="btn btn-primary" id="LogInButton">Login</button>
-            </form>
-        </div>
-        <hr>
         <div class = "container__signup">
-            <h1>Sign-up</h1>
+            <h1>Modificar datos</h1>
             <form name="signUp" id="signUpForm">
-                    <label for="NameSignup" class="form-label">Nombre</label>
+                    <label for="NameSignup" class="form-label">Nombre: 
+                        <?php 
+                            echo "$_SESSION[nombre]";                   
+                        ?>
+                    </label>
+
+
                     <input type="text" class="form-control mb-3" id="NameSignup" name="name" onkeyup="live_checkName()">
                     <p class="wrong_input" id="wrong_name">Solo caracteres alfabeticos</p>
-                    <label for="ApellidosSignup" class="form-label">Apellidos</label>
+                    <label for="ApellidosSignup" class="form-label">Apellidos: <?php echo "$_SESSION[apellidos]";?></label>
                     <input type="text" class="form-control mb-3" id="ApellidosSignup" name="surname" onkeyup="live_checkSurname()">
                     <p class="wrong_input" id="wrong_surname">Solo caracteres alfabeticos</p>
-                    <label for="UsernameSignup" class="form-label">Usuario</label>
+                    <label for="UsernameSignup" class="form-label">Usuario: <?php echo "$_SESSION[usuario]";?></label>
                     <input class="form-control mb-3" id="UsernameSignup" name="username">
-                    <label for="InputPasswordSignup" class="form-label">Contraseña</label>
+                    <label for="InputPasswordSignup" class="form-label">Contraseña: <?php echo "$_SESSION[contraseña]";?></label>
                     <input type="password" class="form-control mb-3" id="InputPasswordSignup" name="password">
-                    <label for="InputEmailSignup" class="form-label">Direccion de correo</label>
+                    <label for="InputEmailSignup" class="form-label">Direccion de correo: <?php echo "$_SESSION[email]";?></label>
                     <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email">
-                    <label for="PhoneSignup" class="form-label">Telefono</label>
+                    <label for="PhoneSignup" class="form-label">Telefono: <?php echo "$_SESSION[telefono]";?></label>
                     <input type="tel" class="form-control mb-3" placeholder="9 Digitos" id="PhoneSignup" name="phone" required minlength="9" maxlength="9">
-                    <label for="DOBSignup" class="form-label">Fecha de nacimiento:</label>
+                    <label for="DOBSignup" class="form-label">Fecha de nacimiento: <?php echo "$_SESSION[fecha_nacimiento]";?></label>
                     <input class="form-control mb-3" id="DOBSignup" placeholder="aaaa-mm-dd" name="dob">
-                    <label for="DNISignup" class="form-label">DNI</label>
+                    <label for="DNISignup" class="form-label">DNI: <?php echo "$_SESSION[dni]";?></label>
                     <input type="text" class="form-control mb-3" id="DNISignup" placeholder="12345678-Z" name="dni">
                     <button type="submit" id="SignUpButton" class="btn btn-primary">Registro</button>
             </form>
