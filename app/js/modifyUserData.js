@@ -79,6 +79,7 @@ function checkDate(){
 async function update(event){
     event.preventDefault();
     //if all the checks are true, submit the form via POST fetch to /api/signup_register.php
+    //hay que permitir que esté vacío, y en ese caso no se actualice
     try {
         if (!checkName() || !checkSurname() || !checkDNI() || !checkTel() || !checkDate()) {
             return;
