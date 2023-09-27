@@ -1,10 +1,4 @@
 <?php
-session_start();
-include "dbconn.php";
-$query = mysqli_query($conn, "SELECT * FROM usuarios")
-or die (mysqli_error($conn));
-$row = mysqli_fetch_array($query);
-
 $nombre = $_REQUEST['name'];
 $apellido = $_REQUEST['surname'];
 $usuario = $_REQUEST['username'];
