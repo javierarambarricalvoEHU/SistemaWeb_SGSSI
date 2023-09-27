@@ -28,13 +28,16 @@ function checkDNI(){
     
     var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'];
     var dni=document.signUp.dni.value.trim();
-    var letraInput=dni[9].toString().toUpperCase();
+    try {
+        var letraInput=dni[9].toString().toUpperCase();
+    } catch (error) {
+        return false;
+    }
     var dniSinLetra=dni.slice(0,8);
 
     dniSinLetra=dniSinLetra%23;
     
     if (letras[dniSinLetra]!=letraInput){
-        window.alert("Error DNI: no corresponde el número con la letra");
         return false;
     }
     return true;
@@ -46,7 +49,6 @@ function checkTel(){
     for (let i = 0; i < tel.length; i++) {
         var ascii = tel.charCodeAt(i);
         if (tel.length<9 || ascii < 48 || ascii > 57) {
-           window.alert ("El número: "+tel+" es INCORRECTO");
            return false;
         }
      }
@@ -56,10 +58,9 @@ function checkTel(){
 
 function checkEmail(){
     var email= document.signUp.email.value.trim();
-    var reg = RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$');
+    var reg = RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');
 
     if (!reg.test(email)){
-        window.alert("Error email: formato incorrecto");
         return false;
     }
     return true;
@@ -70,7 +71,6 @@ function checkDate(){
     var reg = RegExp('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
 
     if (!reg.test(date)){
-        window.alert("Error fecha: formato incorrecto");
         return false;
     }
     return true;
@@ -115,6 +115,38 @@ function live_checkSurname(){
         document.getElementById("wrong_surname").style.display = "none";
     }else{
         document.getElementById("wrong_surname").style.display = "block";
+    }
+}
+
+function live_checkDNI(){
+    if (checkDNI()){
+        document.getElementById("wrong_dni").style.display = "none";
+    }else{
+        document.getElementById("wrong_dni").style.display = "block";
+    }
+}
+
+function live_checkTel(){
+    if (checkTel()){
+        document.getElementById("wrong_tel").style.display = "none";
+    }else{
+        document.getElementById("wrong_tel").style.display = "block";
+    }
+}
+
+function live_checkEmail(){
+    if (checkEmail()){
+        document.getElementById("wrong_email").style.display = "none";
+    }else{
+        document.getElementById("wrong_email").style.display = "block";
+    }
+}
+
+function live_checkDate(){
+    if (checkDate()){
+        document.getElementById("wrong_date").style.display = "none";
+    }else{
+        document.getElementById("wrong_date").style.display = "block";
     }
 }
 

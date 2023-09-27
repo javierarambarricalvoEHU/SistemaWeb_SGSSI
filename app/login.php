@@ -60,13 +60,17 @@
                     <label for="InputPasswordSignup" class="form-label">Contraseña</label>
                     <input type="password" class="form-control mb-3" id="InputPasswordSignup" name="password">
                     <label for="InputEmailSignup" class="form-label">Direccion de correo</label>
-                    <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email">
+                    <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email" onkeyup="live_checkEmail()">
+                    <p class="wrong_input" id="wrong_email">El formato del email no es correcto</p>
                     <label for="PhoneSignup" class="form-label">Telefono</label>
-                    <input type="tel" class="form-control mb-3" placeholder="9 Digitos" id="PhoneSignup" name="phone" required minlength="9" maxlength="9">
+                    <input type="tel" class="form-control mb-3" placeholder="9 Digitos" id="PhoneSignup" name="phone" onkeyup="live_checkTel()">
+                    <p class="wrong_input" id="wrong_tel">El formato del numero de telefono no es correcto</p>
                     <label for="DOBSignup" class="form-label">Fecha de nacimiento:</label>
-                    <input class="form-control mb-3" id="DOBSignup" placeholder="aaaa-mm-dd" name="dob">
+                    <input class="form-control mb-3" id="DOBSignup" placeholder="aaaa-mm-dd" name="dob" onkeyup="live_checkDate()">
+                    <p class="wrong_input" id="wrong_date">El formato del numero de la fecha no es correcto</p>
                     <label for="DNISignup" class="form-label">DNI</label>
-                    <input type="text" class="form-control mb-3" id="DNISignup" placeholder="12345678-Z" name="dni">
+                    <input type="text" class="form-control mb-3" id="DNISignup" placeholder="12345678-Z" name="dni" onkeyup="live_checkDNI()">
+                    <p class="wrong_input" id="wrong_dni">El DNI no es correcto</p>
                     <button type="submit" id="SignUpButton" class="btn btn-primary">Registro</button>
             </form>
             <br>
