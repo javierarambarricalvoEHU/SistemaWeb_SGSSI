@@ -12,7 +12,7 @@ if(!isset($_SESSION['email'])){
     <title>Nueva entrada - Euskoroscopo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/modifyUserData.js"></script>
+    <script type="text/javascript" src="js/createEntry.js"></script>
     <style>
         .wrong_input{
             display: none; 
@@ -41,7 +41,7 @@ if(!isset($_SESSION['email'])){
     <div class="container" style="max-width: 50%;">
         <div class = "container__signup">
             <h1>Añade los datos del horoscopo de alguien</h1>
-            <form name="signUp" id="signUpForm">
+            <form name="entry" id="entryForm">
                     <label for="EntryName" class="form-label">Nombre:</label>
                     <input type="text" class="form-control mb-3" id="EntryName" name="name">
 
