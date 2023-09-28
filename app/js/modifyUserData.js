@@ -37,13 +37,16 @@ function checkDNI(){
     
     var letras = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E','T'];
     var dni=document.signUp.dni.value.trim();
-    var letraInput=dni[9].toString().toUpperCase();
+    try {
+        var letraInput=dni[9].toString().toUpperCase();
+    } catch (error) {
+        return false;
+    }
     var dniSinLetra=dni.slice(0,8);
 
     dniSinLetra=dniSinLetra%23;
     
     if (letras[dniSinLetra]!=letraInput){
-        window.alert("Error DNI: no corresponde el número con la letra");
         return false;
     }
     return true;
@@ -52,28 +55,29 @@ function checkDNI(){
 function checkTel(){
     var tel= document.signUp.phone.value.trim();
 
-    console.debug(tel.length != 9);
     if (tel == ""){
         return false;
     }
+
     for (let i = 0; i < tel.length; i++) {
         var ascii = tel.charCodeAt(i);
-        if (tel.length != 9 || ascii < 48 || ascii > 57) {
-           window.alert ("El número: "+tel+" es INCORRECTO");
+        if (tel.length<9 || ascii < 48 || ascii > 57) {
            return false;
         }
      }
+
      return true;
 }
 
 function checkEmail(){
     var email= document.signUp.email.value.trim();
-    var reg = RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$');
+    var reg = RegExp('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$');
+
     if (email == ""){
         return false;
     }
+
     if (!reg.test(email)){
-        window.alert("Error email: formato incorrecto");
         return false;
     }
     return true;
@@ -82,11 +86,12 @@ function checkEmail(){
 function checkDate(){
     var date= document.signUp.DOBSignup.value;
     var reg = RegExp('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+
     if (date == ""){
         return false;
     }
+    
     if (!reg.test(date)){
-        window.alert("Error fecha: formato incorrecto");
         return false;
     }
     return true;
@@ -95,32 +100,30 @@ function checkDate(){
 async function update(event){
     event.preventDefault();
     //if all the checks are true, submit the form via POST fetch to /api/signup_register.php
-    sql = "UPDATE `users` SET ";
+    sql = "UPDATE `usuarios` SET ";
     sql = fill_fields(sql);
-    if (sql == "UPDATE `users` SET "){
+    if (sql == "UPDATE `usuarios` SET "){
         alert("No se ha modificado ningún campo");
         return;
     }
-    sql = sql.concat(" WHERE dni = '", document.getElementById("DNISignup").getAttribute("placeholder")).concat("'");
-    console.log(sql);
-    // res = await fetch('/api/update_data.php', {
-    //     method: 'POST',
-    //     body: fd
-    // })
-    // res = await res.text();
-    // console.log(res)
-    // if (res != 'Usuario modificado correctamente') {
-    //     alert(res);
-    // }else{
-    //     alert(res);
-    //     window.location.reload()
-    // }
+    sql = sql.slice(0,-1).concat(" WHERE dni = '", document.getElementById("DNISignup").getAttribute("placeholder")).concat("'");
+    res = await fetch('/api/update_data.php', {
+        method: 'POST',
+        body: sql
+    })
+    res = await res.text();
+    if (res != 'success') {
+        alert(res);
+    }else{
+        alert("Actualización realizada con éxito");
+        window.location.reload();
+    }
 }
 
 function fill_fields(sql){
     try{
         if (checkName()){
-            sql = sql.concat(" nombre = '", document.signUp.name.value.trim()).concat("'");
+            sql = sql.concat(" nombre = '", document.signUp.name.value.trim()).concat("',");
         }
     }
     catch(err){
@@ -128,7 +131,7 @@ function fill_fields(sql){
     }
     try{
         if (checkSurname()){
-            sql = sql.concat(" apellidos = '", document.signUp.surname.value.trim()).concat("'");
+            sql = sql.concat(" apellidos = '", document.signUp.surname.value.trim()).concat("',");
 
         }
     }
@@ -137,7 +140,7 @@ function fill_fields(sql){
     }
     try{
         if (checkDNI()){
-            sql = sql.concat(" dni = '", document.signUp.dni.value.trim()).concat("'");
+            sql = sql.concat(" dni = '", document.signUp.dni.value.trim()).concat("',");
         }
     }
     catch(err){
@@ -146,7 +149,7 @@ function fill_fields(sql){
     try{
         if (checkTel()){
             console.debug("telefono");
-            sql = sql.concat(" telefono = '", document.signUp.phone.value.trim()).concat("'");
+            sql = sql.concat(" telefono = '", document.signUp.phone.value.trim()).concat("',");
         }
     }
     catch(err){
@@ -154,7 +157,7 @@ function fill_fields(sql){
     }
     try{
         if (checkEmail()){
-            sql = sql.concat(" email = '", document.signUp.email.value.trim()).concat("'");
+            sql = sql.concat(" email = '", document.signUp.email.value.trim()).concat("',");
         }
     }
     catch(err){
@@ -162,7 +165,25 @@ function fill_fields(sql){
     }
     try{
         if (checkDate()){
-            sql = sql.concat(" fecha_nacimiento = '", document.signUp.DOBSignup.value.trim()).concat("'");
+            sql = sql.concat(" fecha_nacimiento = '", document.signUp.DOBSignup.value.trim()).concat("',");
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+    try{
+        usuario = document.getElementById("UsernameSignup").value.trim();
+        if (usuario != ""){
+            sql = sql.concat(" usuario = '", usuario).concat("',");
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
+    try{
+        contrasena = document.getElementById("InputPasswordSignup").value.trim();
+        if (contrasena != ""){
+            sql = sql.concat(" contraseña = '", contrasena).concat("',");
         }
     }
     catch(err){
@@ -186,6 +207,40 @@ function live_checkSurname(){
         document.getElementById("wrong_surname").style.display = "block";
     }
 }
+
+function live_checkDNI(){
+    if (checkDNI()){
+        document.getElementById("wrong_dni").style.display = "none";
+    }else{
+        document.getElementById("wrong_dni").style.display = "block";
+    }
+}
+
+function live_checkTel(){
+    if (checkTel()){
+        document.getElementById("wrong_tel").style.display = "none";
+    }else{
+        document.getElementById("wrong_tel").style.display = "block";
+    }
+}
+
+function live_checkEmail(){
+    if (checkEmail()){
+        console.log("email");
+        document.getElementById("wrong_email").style.display = "none";
+    }else{
+        document.getElementById("wrong_email").style.display = "block";
+    }
+}
+
+function live_checkDate(){
+    if (checkDate()){
+        document.getElementById("wrong_date").style.display = "none";
+    }else{
+        document.getElementById("wrong_date").style.display = "block";
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById("SignUpButton").addEventListener("click", update);

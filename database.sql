@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: db
--- Tiempo de generación: 18-09-2023 a las 23:40:16
+-- Tiempo de generación: 28-09-2023 a las 06:47:04
 -- Versión del servidor: 10.8.2-MariaDB-1:10.8.2+maria~focal
 -- Versión de PHP: 8.2.8
 
@@ -43,7 +43,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`dni`, `nombre`, `apellidos`, `usuario`, `contraseña`, `email`, `telefono`, `fecha_nacimiento`) VALUES
-('77968543-P', 'Adair', 'Gondan', 'dufbcju', 'hbioihubdjhubjo', 'adairyves@gmail.com', '666666666', '2004-08-16');
+('10000000-Z', 'Testing', 'Testing', 'test', 'test', 'test@test.com', '123123123', '1970-01-01'),
+('77968543-P', 'Adair', 'Gondan', 'tetas', 'tetas', 'adairyves@gmail.com', '123123123', '2004-08-16');
 
 --
 -- Índices para tablas volcadas
@@ -53,7 +54,9 @@ INSERT INTO `usuarios` (`dni`, `nombre`, `apellidos`, `usuario`, `contraseña`, 
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`dni`);
+  ADD PRIMARY KEY (`dni`),
+  ADD UNIQUE KEY `usuario` (`usuario`) USING HASH,
+  ADD UNIQUE KEY `email` (`email`) USING HASH;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

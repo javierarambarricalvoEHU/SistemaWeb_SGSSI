@@ -55,13 +55,17 @@
                     <label for="InputPasswordSignup" class="form-label">Contraseña</label>
                     <input type="password" class="form-control mb-3" id="InputPasswordSignup" name="password" placeholder=<?php echo "$row[4]";?>>
                     <label for="InputEmailSignup" class="form-label">Direccion de correo</label>
-                    <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email" placeholder=<?php echo "$row[5]";?>>
+                    <input type="email" class="form-control mb-3" id="InputEmailSignup" name="email" placeholder=<?php echo "$row[5]";?> onkeyup="live_checkEmail()">
+                    <p class="wrong_input" id="wrong_email">El formato del email no es correcto</p>
                     <label for="PhoneSignup" class="form-label">Telefono (9 dígitos) </label>
-                    <input type="tel" class="form-control mb-3" id="PhoneSignup" name="phone" required minlength="9" maxlength="9" placeholder=<?php echo "$row[6]";?>>
+                    <input type="tel" class="form-control mb-3" id="PhoneSignup" name="phone" onkeyup="live_checkTel()" placeholder=<?php echo "$row[6]";?>>
+                    <p class="wrong_input" id="wrong_tel">El formato del numero de telefono no es correcto</p>
                     <label for="DOBSignup" class="form-label">Fecha de nacimiento (aaaa-mm-dd) </label>
-                    <input class="form-control mb-3" id="DOBSignup" name="dob" placeholder=<?php echo "$row[7]";?>>
+                    <input class="form-control mb-3" id="DOBSignup" name="dob" placeholder=<?php echo "$row[7]";?> onkeyup="live_checkDate()">
+                    <p class="wrong_input" id="wrong_date">El formato del numero de la fecha no es correcto</p>
                     <label for="DNISignup" class="form-label">DNI (12345678-Z)</label>
-                    <input type="text" class="form-control mb-3" id="DNISignup" name="dni" placeholder=<?php echo "$row[0]";?>>
+                    <input type="text" class="form-control mb-3" id="DNISignup" name="dni" placeholder=<?php echo "$row[0]";?> onkeyup="live_checkDNI()">
+                    <p class="wrong_input" id="wrong_dni">El DNI no es correcto</p>
                     <button type="submit" id="SignUpButton" class="btn btn-primary">Registro</button>
             </form>
             <br>
