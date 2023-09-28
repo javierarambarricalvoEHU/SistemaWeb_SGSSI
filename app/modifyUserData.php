@@ -1,7 +1,11 @@
 <?php
     session_start();
+    if(!isset($_SESSION['email'])){
+        header("Location: /login.php");
+        exit;
+    }
     include "dbconn.php";
-    $query = mysqli_query($conn, "SELECT * FROM usuarios")
+    $query = mysqli_query($conn, "SELECT * FROM usuarios WHERE email = '$_SESSION[email]'")
     or die (mysqli_error($conn));
 
     $row = mysqli_fetch_array($query);
