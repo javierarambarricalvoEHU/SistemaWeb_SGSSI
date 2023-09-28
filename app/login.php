@@ -26,6 +26,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <?php if(isset($_SESSION['email'])){
+                echo '<li class="nav-item"><a href="createEntry.php" class="nav-link">Crear entrada</a></li>';
                 echo '<li class="nav-item"><a href="modifyUserData.php" class="nav-link">Modificar datos</a></li>';
                 echo '<li class="nav-item"><a href="logout.php" class="btn btn-danger">Logout</a></li>';
                 }?>
