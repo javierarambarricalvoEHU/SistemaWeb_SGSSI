@@ -1,9 +1,3 @@
-<?php session_start();
-if(!isset($_SESSION['email'])){
-    header("Location: /login.php");
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,57 +34,60 @@ if(!isset($_SESSION['email'])){
     </div>
     <div class="container" style="max-width: 50%;">
         <div class = "container__signup">
-            <h1>Modifica los datos del horoscopo de alguien con id: 
-
-                <?php ?>
-
-
-
+            <h1>Modifica los datos del horoscopo de alguien con id:
+                <?php 
+                    echo $_GET['id'];
+                    include "dbconn.php";
+                    $query = mysqli_query($conn, "SELECT * FROM horoscopos WHERE id = $_GET[id]")
+                        or die (mysqli_error($conn));
+                    $row = mysqli_fetch_array($query);
+                    
+                ?>
             </h1>
             <form name="signUp" id="signUpForm">
                     <label for="EntryName" class="form-label">Nombre:</label>
-                    <input type="text" class="form-control mb-3" id="EntryName" name="name">
+                    <input type="text" class="form-control mb-3" id="EntryName" name="name" placeholder=<?php echo $row['nombre'];?>>
 
-                    <label for="EntrDOB" class="form-label">Fecha de nacimiento (aaaa-mm-dd) </label>
+                    <label for="EntrDOB" class="form-label">Fecha de nacimiento (<?php echo $row['fecha_nacimiento'];?>)</label>
                     <input type="date" class="form-control mb-3" id="DOBSignup" name="dob" onkeyup="live_checkDate()">
                     <p class="wrong_input" id="wrong_date">El formato del numero de la fecha no es correcto</p>
 
                     <label for="signosolar" class="form-label">Elige el signo solar:</label>
                     <select class="form-select mb-3" name="signosolar" id="signosolar">
-                        <option value=Aries>Aries</option>
-                        <option value=Tauro>Tauro</option>
-                        <option value=Geminis>Geminis</option>
-                        <option value=Cancer>Cancer</option>
-                        <option value=Leo>Leo</option>
-                        <option value=Virgo>Virgo</option>
-                        <option value=Libra>Libra</option>
-                        <option value=Escorpio>Escorpio</option>
-                        <option value=Sagitario>Sagitario</option>
-                        <option value=Capricornio>Capricornio</option>
-                        <option value=Acuario>Acuario</option>
-                        <option value=Piscis>Piscis</option>
+                        <option value="Aries" <?php if($row['signo_solar'] == 'Aries') echo 'selected'; ?>>Aries</option>
+                        <option value="Tauro" <?php if($row['signo_solar'] == 'Tauro') echo 'selected'; ?>>Tauro</option>
+                        <option value="Geminis" <?php if($row['signo_solar'] == 'Geminis') echo 'selected'; ?>>Geminis</option>
+                        <option value="Cancer" <?php if($row['signo_solar'] == 'Cancer') echo 'selected'; ?>>Cancer</option>
+                        <option value="Leo" <?php if($row['signo_solar'] == 'Leo') echo 'selected'; ?>>Leo</option>
+                        <option value="Virgo" <?php if($row['signo_solar'] == 'Virgo') echo 'selected'; ?>>Virgo</option>
+                        <option value="Libra" <?php if($row['signo_solar'] == 'Libra') echo 'selected'; ?>>Libra</option>
+                        <option value="Escorpio" <?php if($row['signo_solar'] == 'Escorpio') echo 'selected'; ?>>Escorpio</option>
+                        <option value="Sagitario" <?php if($row['signo_solar'] == 'Sagitario') echo 'selected'; ?>>Sagitario</option>
+                        <option value="Capricornio" <?php if($row['signo_solar'] == 'Capricornio') echo 'selected'; ?>>Capricornio</option>
+                        <option value="Acuario" <?php if($row['signo_solar'] == 'Acuario') echo 'selected'; ?>>Acuario</option>
+                        <option value="Piscis" <?php if($row['signo_solar'] == 'Piscis') echo 'selected'; ?>>Piscis</option>
                     </select>
 
                     <label for="signolunar" class="form-label">Elige el signo lunar:</label>
                     <select class="form-select mb-3" name="signolunar" id="signolunar">
-                        <option value=Aries>Aries</option>
-                        <option value=Tauro>Tauro</option>
-                        <option value=Geminis>Geminis</option>
-                        <option value=Cancer>Cancer</option>
-                        <option value=Leo>Leo</option>
-                        <option value=Virgo>Virgo</option>
-                        <option value=Libra>Libra</option>
-                        <option value=Escorpio>Escorpio</option>
-                        <option value=Sagitario>Sagitario</option>
-                        <option value=Capricornio>Capricornio</option>
-                        <option value=Acuario>Acuario</option>
-                        <option value=Piscis>Piscis</option>
+                        <option value="Aries" <?php if($row['signo_lunar'] == 'Aries') echo 'selected'; ?>>Aries</option>
+                        <option value="Tauro" <?php if($row['signo_lunar'] == 'Tauro') echo 'selected'; ?>>Tauro</option>
+                        <option value="Geminis" <?php if($row['signo_lunar'] == 'Geminis') echo 'selected'; ?>>Geminis</option>
+                        <option value="Cancer" <?php if($row['signo_lunar'] == 'Cancer') echo 'selected'; ?>>Cancer</option>
+                        <option value="Leo" <?php if($row['signo_lunar'] == 'Leo') echo 'selected'; ?>>Leo</option>
+                        <option value="Virgo" <?php if($row['signo_lunar'] == 'Virgo') echo 'selected'; ?>>Virgo</option>
+                        <option value="Libra" <?php if($row['signo_lunar'] == 'Libra') echo 'selected'; ?>>Libra</option>
+                        <option value="Escorpio" <?php if($row['signo_lunar'] == 'Escorpio') echo 'selected'; ?>>Escorpio</option>
+                        <option value="Sagitario" <?php if($row['signo_lunar'] == 'Sagitario') echo 'selected'; ?>>Sagitario</option>
+                        <option value="Capricornio" <?php if($row['signo_lunar'] == 'Capricornio') echo 'selected'; ?>>Capricornio</option>
+                        <option value="Acuario" <?php if($row['signo_lunar'] == 'Acuario') echo 'selected'; ?>>Acuario</option>
+                        <option value="Piscis" <?php if($row['signo_lunar'] == 'Piscis') echo 'selected'; ?>>Piscis</option>
                     </select>
 
                     <label for="retrogrado" class="form-label">Esta persona nació en mercurio retrogrado?</label>
                     <select class="form-select mb-3" name="retrogrado" id="retrogrado">
                         <option value=No>No</option>
-                        <option value=Si>Si</option>
+                        <option value=Si <?php if($row['mercurio_retrogrado'] == 1) echo 'selected'; ?>>Si</option>
                     </select>
 
                     <button type="submit" id="sendButton" class="btn btn-primary">Modificar</button>

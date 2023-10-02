@@ -8,6 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="style_index.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="js/index.js"></script>
 </head>
 <body style="background-image: url('images/background.webp');
             background-size: cover; color: white;">
@@ -45,6 +49,40 @@
                 echo $row[0];
                 ?> usuarios
             </h2>
+            <div>
+                <table id="tablaHoroscopos" class="display">
+                    <!-- CREATE TABLE `horoscopos` (
+                        `id` int(11) NOT NULL,
+                        `nombre` tinytext NOT NULL,
+                        `fecha_nacimiento` date NOT NULL,
+                        `signo_solar` enum('Aries','Tauro','Geminis','Cancer','Leo','Virgo','Libra','Escorpio','Sagitario','Capricornio','Acuario','Piscis') NOT NULL,
+                        `signo_lunar` enum('Aries','Tauro','Geminis','Cancer','Leo','Virgo','Libra','Escorpio','Sagitario','Capricornio','Acuario','Piscis') NOT NULL,
+                        `mercurio_retrogrado` tinyint(1) NOT NULL
+                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; -->
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Signo solar</th>
+                            <th>Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query = mysqli_query($conn, "SELECT id, nombre, signo_solar FROM horoscopos")
+                            or die (mysqli_error($conn));
+                        
+                        while ($row = mysqli_fetch_array($query)) {
+                            echo "<tr>";
+                            echo "<td>$row[nombre]</td>";
+                            echo "<td>$row[signo_solar]</td>";
+                            echo "<td><button class='btn btn-danger' onclick='editEntry($row[id])'>Editar</button></td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                    </thead>
+                </table>
+            </div>
         </main>
         <footer>
         Zodiac Backgrounds@wallpaperuse.com
