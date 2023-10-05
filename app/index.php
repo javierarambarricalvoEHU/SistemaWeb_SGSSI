@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <link rel="stylesheet" href="css/tabla_inicio.css" />
+
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
     <script src="js/index.js"></script>
 </head>
@@ -49,16 +51,9 @@
                 echo $row[0];
                 ?> usuarios
             </h2>
+            <br>
             <div>
                 <table id="tablaHoroscopos" class="display">
-                    <!-- CREATE TABLE `horoscopos` (
-                        `id` int(11) NOT NULL,
-                        `nombre` tinytext NOT NULL,
-                        `fecha_nacimiento` date NOT NULL,
-                        `signo_solar` enum('Aries','Tauro','Geminis','Cancer','Leo','Virgo','Libra','Escorpio','Sagitario','Capricornio','Acuario','Piscis') NOT NULL,
-                        `signo_lunar` enum('Aries','Tauro','Geminis','Cancer','Leo','Virgo','Libra','Escorpio','Sagitario','Capricornio','Acuario','Piscis') NOT NULL,
-                        `mercurio_retrogrado` tinyint(1) NOT NULL
-                        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; -->
                     <thead>
                         <tr>
                             <th>Nombre</th>
