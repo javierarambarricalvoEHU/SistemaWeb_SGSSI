@@ -1,1 +1,114 @@
 /*Aquí irá el css propio cuando modifiquemos el html*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans', sans-serif;
+}
+
+.navbar {
+
+    background: none; /*#131313*/
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999; /*Menu will be above any other content, 999 is excessive*/
+}
+
+.navbar_container {
+
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto; /*TOP AND BOTTOM, RIGTH AND LEFT*/
+    /* margin: 0 0 0 0; TOP RIGHT BOTTOM LEFT*/
+    padding: 0 50px;
+    /*color: aquamarine; COLOR OF THE DOTS*/
+}
+
+#navbar_logo {
+    background-color: #000000; /*#ff8177*/
+    background-image: linear-gradient(to top, #ff0844, 0%, #ffb1, 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+
+.navbar_menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    margin: 1rem auto auto 0.5 rem;
+}
+
+.navbar_name {
+    margin: 1rem auto auto 1rem;
+}
+
+.navbar_item {
+
+    height: 150px;
+    display: flex;
+
+}
+
+.navbar_links {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.navbar_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 65%;
+    width: 90%;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background: #2a6ed4; /*#f77062*/
+    color: #ffffff;
+}
+
+.button:hover {
+    background: #8314dd;
+    transition: all 0.3s ease;
+}
+
+.navbar__links:hover {
+    color: #fff; /*4837f4*/
+    transition: all 0.3s ease;
+}
+
